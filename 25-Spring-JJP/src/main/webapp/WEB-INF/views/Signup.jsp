@@ -36,7 +36,7 @@
             <div class="form-group">
                 <label class="required" for="email">Email</label>
                 <input type="email" class="form-control" id="email" name="email" required>
-                <div class="invalid-feedback">Please provide a valid email.</div>
+                <div class="text-danger">${result.getFieldError("email").getDefaultMessage()}</div>
             </div>
 
             <div class="form-row">

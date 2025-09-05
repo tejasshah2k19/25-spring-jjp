@@ -1,19 +1,29 @@
 package com.bean;
 
+import org.hibernate.validator.constraints.Length;
+
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 public class UserBean {
 	
 	@NotBlank(message = "Please Enter FirstName")
+	//alphabets 
 	private String firstName;
 
 	@NotBlank(message = "Please Enter LastName")
+	//alphabets 
 	private String lastName;
 
-	@NotBlank
+	@NotBlank(message="Please Enter Email")
+	@Pattern(regexp = "[a-zA-Z]+@[a-zA-Z]+\\.[a-zA-Z]+",message = "Please Enter Valid Email")
 	private String email;
 
-	@NotBlank
+	//XXX@XXX.com 
+	
+	@NotBlank(message = "Please Enter Password")
+	@Length(min=8,message = "Password Should have min 8 characters")
+	@Length(max=50,message = "Password can have max 50 chracters")
 	private String password;
 
 	public String getFirstName() {

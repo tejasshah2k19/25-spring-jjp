@@ -1,0 +1,32 @@
+user input 
+web app -> data -> store -> data base 
+
+
+adv java ->
+	1) mysql driver 
+	
+	DbConnection	
+		url
+		username
+		password
+		
+	call
+		Connection
+		PreparedStatement 
+		
+	
+
+
+spring -> database -> 
+		step1:  [ jar ]
+				1) mysql driver
+				2) spring data jdbc 
+				{project right click -> spring -> Add Starter -> select your jar -> next -> pom.xml -> finish } 
+		step2:	[ connection ] 
+			application.properties 
+				url
+				userName
+				password 
+				
+		step 3: query execute -> dao 		
+			

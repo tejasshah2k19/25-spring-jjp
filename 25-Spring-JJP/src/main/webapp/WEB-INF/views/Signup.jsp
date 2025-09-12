@@ -43,7 +43,7 @@
                 <div class="form-group col-md-6">
                     <label class="required" for="password">Password</label>
                     <input type="password" class="form-control" id="password" name="password" minlength="6" required>
-                    <div class="invalid-feedback">Password must be at least 6 characters.</div>
+                    <div class="text-danger">${result.getFieldError("password").getDefaultMessage()}</div>
                 </div>
                 <div class="form-group col-md-6">
                     <label class="required" for="confirmPassword">Confirm Password</label>

@@ -30,3 +30,26 @@ spring -> database ->
 				
 		step 3: query execute -> dao 		
 			
+-----------------------------
+
+table : books
+	bookId
+	bookName
+	authorName
+	price 
+	category 
+	
+	newbook 
+			input
+	savebook 
+			db insert 
+			
+-----------------------------
+	
+	
+	
+	
+
+
+
+

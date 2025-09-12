@@ -1,5 +1,7 @@
 package com.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,6 +13,9 @@ import com.bean.UserBean;
 
 @Controller
 public class SessionController {
+
+	@Autowired
+	JdbcTemplate stmt;// C o = new C();//10 -> singleton design -> class -> 1 object
 
 	@GetMapping("signup")
 	public String signup() {
@@ -38,12 +43,18 @@ public class SessionController {
 
 		if (result.hasErrors()) {
 			model.addAttribute("result", result);
+			System.out.println(result.getAllErrors());
 			return "Signup";
 		} else {
 			System.out.println(user.getFirstName());
 			System.out.println(user.getLastName());
 			System.out.println(user.getPassword());
 			System.out.println(user.getEmail());
+
+			// insert update delete
+			stmt.update("insert into users (firstName,lastName,email,password) values (?,?,?,?)", user.getFirstName(),
+					user.getLastName(), user.getEmail(), user.getPassword());
+			
 			return "Login";
 		}
 	}

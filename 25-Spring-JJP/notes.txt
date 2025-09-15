@@ -47,7 +47,42 @@ table : books
 -----------------------------
 	
 	
-	
+	db query ->
+					JdbcTemplate -> 
+										update() { insert update delete } 
+										query() { select   } { n records } 
+										queryForObject() { select } { single record }
+					
+-------------------------------------------------					
+		jstl
+			1) core 
+			2) sql 
+			3) formating 
+			4) function
+			5) xml 
+			
+					
+		1) JSTL -> lib -> pom.xml 
+		
+		2) jsp -> import -> 	
+		     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+				
+					
+					
+					
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>jakarta.servlet.jsp.jstl</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+		</dependency>
+					
+-------------------------------------------------					
+					
+					
 	
 
 

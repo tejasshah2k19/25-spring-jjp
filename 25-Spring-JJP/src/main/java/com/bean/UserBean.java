@@ -7,6 +7,9 @@ import jakarta.validation.constraints.Pattern;
 
 public class UserBean {
 	
+	
+	private Integer userId; 
+	
 	@NotBlank(message = "Please Enter FirstName")
 	//alphabets 
 	private String firstName;
@@ -25,6 +28,16 @@ public class UserBean {
 	@Length(min=8,message = "Password Should have min 8 characters")
 	@Length(max=50,message = "Password can have max 50 chracters")
 	private String password;
+
+	
+	
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
 
 	public String getFirstName() {
 		return firstName;

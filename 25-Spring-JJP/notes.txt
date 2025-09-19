@@ -81,9 +81,24 @@ table : books
 		</dependency>
 					
 -------------------------------------------------					
-					
-					
+		search user
+		
+			SearchUser.jsp 
+			
+			FirstName [ ram ] 
+				[submit] 
+				
+				
+		search 
+				ram ->db -> 
+				SearchResult
+				
+				.jsp 
+				1 Ram  Patel		 			
+				2 Ram  Bhatt
+				
 	
+-------------------------------------------------					
 
 
 

@@ -20,15 +20,22 @@ public class UserDao {
 				user.getLastName(), user.getEmail(), user.getPassword());
 	}
 
-	//get all users 
-	public List<UserBean> getAllUsers(){
+	// get all users
+	public List<UserBean> getAllUsers() {
 		List<UserBean> allUsers = stmt.query("select * from users", new BeanPropertyRowMapper<>(UserBean.class));
 		return allUsers;
 	}
 
 	// delete
 	public int deleteUserById(Integer userId) {
-		return stmt.update("delete from users where userId = ?",userId);
+		return stmt.update("delete from users where userId = ?", userId);
+	}
+
+	// get user by id
+	public UserBean getUserById(Integer userId) {
+		UserBean user = stmt.queryForObject("select * from users where userId = ? ",
+				new BeanPropertyRowMapper<>(UserBean.class),userId);
+		return user;
 	}
 
 	// search

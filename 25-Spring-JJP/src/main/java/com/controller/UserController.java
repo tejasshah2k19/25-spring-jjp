@@ -30,14 +30,20 @@ public class UserController {
 	}
 
 	@GetMapping("deleteuser")
-	public String deleteUser(Integer userId,Model model) {
+	public String deleteUser(Integer userId, Model model) {
 
-		//delete 
-		//delete from users wehre userId  =  xx ; 
+		// delete
+		// delete from users wehre userId = xx ;
 		int status = userDao.deleteUserById(userId);
-		
-		
-		return "redirect:/listuser";//url
+		return "redirect:/listuser";// url
+	}
+
+	@GetMapping("viewuser")
+	public String viewUser(Integer userId,Model model) {
+
+		UserBean user = userDao.getUserById(userId);
+		model.addAttribute("user",user);
+		return "ViewUser";// jsp
 	}
 
 }

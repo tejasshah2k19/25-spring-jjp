@@ -10,21 +10,34 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.bean.UserBean;
+import com.dao.UserDao;
 
 @Controller
 public class UserController {
 
 	@Autowired
-	JdbcTemplate stmt;
+	UserDao userDao;
 
 	@GetMapping("listuser")
 	public String listUser(Model model) {
 
 		// select * from users
+		List<UserBean> allUsers = userDao.getAllUsers();
 
-		List<UserBean> allUsers = stmt.query("select * from users", new BeanPropertyRowMapper<>(UserBean.class));
-		//controller -> jsp -> data -> send -> 
-		model.addAttribute("allUsers",allUsers);
+		// controller -> jsp -> data -> send ->
+		model.addAttribute("allUsers", allUsers);
 		return "ListUser";
 	}
+
+	@GetMapping("deleteuser")
+	public String deleteUser(Integer userId,Model model) {
+
+		//delete 
+		//delete from users wehre userId  =  xx ; 
+		int status = userDao.deleteUserById(userId);
+		
+		
+		return "redirect:/listuser";//url
+	}
+
 }

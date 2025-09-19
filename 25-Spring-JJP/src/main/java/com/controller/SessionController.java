@@ -10,12 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.bean.UserBean;
+import com.dao.UserDao;
 
 @Controller
 public class SessionController {
 
 	@Autowired
-	JdbcTemplate stmt;// C o = new C();//10 -> singleton design -> class -> 1 object
+	UserDao userDao;
 
 	@GetMapping("signup")
 	public String signup() {
@@ -51,10 +52,7 @@ public class SessionController {
 			System.out.println(user.getPassword());
 			System.out.println(user.getEmail());
 
-			// insert update delete
-			stmt.update("insert into users (firstName,lastName,email,password) values (?,?,?,?)", user.getFirstName(),
-					user.getLastName(), user.getEmail(), user.getPassword());
-			
+			userDao.addUser(user);
 			return "Login";
 		}
 	}

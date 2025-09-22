@@ -34,8 +34,19 @@ public class UserDao {
 	// get user by id
 	public UserBean getUserById(Integer userId) {
 		UserBean user = stmt.queryForObject("select * from users where userId = ? ",
-				new BeanPropertyRowMapper<>(UserBean.class),userId);
+				new BeanPropertyRowMapper<>(UserBean.class), userId);
 		return user;
+	}
+
+	public List<UserBean> searchUserByFirstName(String firstName) {
+		List<UserBean> allUsers = stmt.query("select * from users where firstName like ?",
+				new BeanPropertyRowMapper<>(UserBean.class), "%" + firstName + "%");
+		return allUsers;
+	}
+
+	public void updateUser(UserBean user) {
+		stmt.update("update users set firstName = ? , lastName = ? where userId = ?", user.getFirstName(),
+				user.getLastName(), user.getUserId());
 	}
 
 	// search

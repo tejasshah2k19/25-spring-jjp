@@ -3,11 +3,10 @@ package com.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.bean.UserBean;
 import com.dao.UserDao;
@@ -46,4 +45,35 @@ public class UserController {
 		return "ViewUser";// jsp
 	}
 
+	@GetMapping("searchuser")
+	public String searchUser() {
+		return "SearchUser";
+	}
+	
+	@PostMapping("searchuser")
+	public String findUser(String firstName,Model model) {
+	List<UserBean> allUsers = 	userDao.searchUserByFirstName(firstName);
+		model.addAttribute("allUsers",allUsers);
+		return "ListUser";
+	}
+	
+	@GetMapping("edituser")
+	public String editUser(Integer userId,Model model) {
+
+		UserBean user = userDao.getUserById(userId);
+		model.addAttribute("user",user);
+		return "EditUser";
+		
+	}
+	
+	@PostMapping("updateuser")
+	public String updateUser(UserBean user) {
+		userDao.updateUser(user);
+		return "redirect:/listuser";//url 
+	}
+	
+	
+	
+	
+	
 }

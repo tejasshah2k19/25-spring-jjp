@@ -30,7 +30,8 @@
 						<td>${u.userId }</td>
 						<td>${u.firstName }</td>
 						<td><a href="deleteuser?userId=${u.userId}">Delete</a> | 
-							<a href="viewuser?userId=${u.userId}">View</a>
+							<a href="viewuser?userId=${u.userId}">View</a> |
+							<a href="edituser?userId=${u.userId}">Edit</a>
 						</td>
 					</tr>
 				</c:forEach>
@@ -39,11 +40,10 @@
 
 			</table>
 
-
+		<a href="searchuser">Search</a>
+	
 		</div>
 	</div>
-
-
 
 	<%-- <div class="row">
 		<div class="col-md-3"></div>

@@ -99,6 +99,41 @@ table : books
 				
 	
 -------------------------------------------------					
+laptop 
+
+	laptopId
+	modelName
+	ram
+	price
+	ssd 
+	
+1)
+	create table laptop ( 
+		laptopId int primary key auto_increment,
+		modelName varchar(20),
+		ram int,
+		price int,
+		ssd int
+	);
+
+2) bean 
+	LaptopBean
+	
+3) Controller 
+
+	
+	
+	
+-----------------------------------------------
+
+lib : lombok 
+			add jar pom.xml 
+			@Getter
+			@Setter 
+			
+-----------------------------------------------
+
+
 
 
 

@@ -19,7 +19,7 @@ public class UserBean {
 	private String lastName;
 
 	@NotBlank(message="Please Enter Email")
-	@Pattern(regexp = "[a-zA-Z]+@[a-zA-Z]+\\.[a-zA-Z]+",message = "Please Enter Valid Email")
+	@Pattern(regexp = "[a-zA-Z0-9]+@[a-zA-Z]+\\.[a-zA-Z]+",message = "Please Enter Valid Email")
 	private String email;
 
 	//XXX@XXX.com 

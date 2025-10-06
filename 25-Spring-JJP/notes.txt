@@ -133,9 +133,21 @@ lib : lombok
 			
 -----------------------------------------------
 
+password encryption -> 
 
-
-
+		bcrypt 
+		 
+		 
+		step1: 
+			pom.xml spring crypto  
+			spring-crypto ->BcryptPasswordEncoder
+	
+		step2: 
+				create object of BcryptPasswordEncoder 
+				
+		step3:	
+				use encode() to encrypt the password 
+				
 
 
 

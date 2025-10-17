@@ -132,6 +132,7 @@ lib : lombok
 			@Setter 
 			
 -----------------------------------------------
+algo -> bcrypt 
 
 password encryption -> 
 
@@ -147,16 +148,63 @@ password encryption ->
 				
 		step3:	
 				use encode() to encrypt the password 
+				10
+				
+				
+	email 	 :	aaa	
+	password :	bbb 
+
+ 
+ 
+ royal => 5miueyrfui
+ royal => l56oy5t
+	no decrypt 
+	
+
+aaa	6juy54eidfvuy6g7t584irutg
+
+	boolean status = matches(plainPassword,encPassword) 
+	
+
+authenticate ->
+		email password 
+		
+		UserBean user = select * from users where email = ? 
+		
+		boolean status = bcrypt.matches(password,user.getPassword())
+		
+-------------------------------------------------------------------------------------- 
+
+employee register -> 
+		firstName
+		lastName
+		email
+		password
+		profilePic 
 				
 
+db 
+	fn ln em encPwd  profilePic 
 
 
+cloudinary -> file ->
+			type -> image 
+			
+
+----------------------------------
+1) create employee table with respective fields
+2) login with cloudinary and collection 3 data 
+
+3) add cloudinary dep / jar /  in pom.xml 
 
 
-
-
-
-
+4) Getmapping -> input employee 
+   PostMapping -> read employee 
+   
+5) if validation success 
+	upload file 
+	
+		
 
 
 

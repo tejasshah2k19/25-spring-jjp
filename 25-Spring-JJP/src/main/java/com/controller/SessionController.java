@@ -3,6 +3,7 @@ package com.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,9 +14,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.bean.UserBean;
 import com.dao.UserDao;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class SessionController {
 
+	@Autowired
+	PasswordEncoder bcrypt;
+	
 	@Autowired
 	UserDao userDao;
 
@@ -25,7 +31,10 @@ public class SessionController {
 	}
 
 	@GetMapping("login")
-	public String login() {
+	public String login(HttpSession session) {
+		session.setAttribute("otp","111");
+		session.setAttribute("email", "2222");
+		
 		return "Login";
 	}
 
@@ -53,7 +62,6 @@ public class SessionController {
 			System.out.println(user.getPassword());
 			System.out.println(user.getEmail());
 
-			BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
 			String encryptedPassword =  bcrypt.encode(user.getPassword());
 			System.out.println("encrypted password => "+encryptedPassword);
 			user.setPassword(encryptedPassword);

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.bean.UserBean;
 import com.dao.UserDao;
+import com.service.MailerService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -21,9 +22,12 @@ public class SessionController {
 
 	@Autowired
 	PasswordEncoder bcrypt;
-	
+
 	@Autowired
 	UserDao userDao;
+
+	@Autowired
+	MailerService mailerService;
 
 	@GetMapping("signup")
 	public String signup() {
@@ -32,9 +36,9 @@ public class SessionController {
 
 	@GetMapping("login")
 	public String login(HttpSession session) {
-		session.setAttribute("otp","111");
+		session.setAttribute("otp", "111");
 		session.setAttribute("email", "2222");
-		
+
 		return "Login";
 	}
 
@@ -62,11 +66,18 @@ public class SessionController {
 			System.out.println(user.getPassword());
 			System.out.println(user.getEmail());
 
-			String encryptedPassword =  bcrypt.encode(user.getPassword());
-			System.out.println("encrypted password => "+encryptedPassword);
+			String encryptedPassword = bcrypt.encode(user.getPassword());
+			System.out.println("encrypted password => " + encryptedPassword);
 			user.setPassword(encryptedPassword);
-			
+
 			userDao.addUser(user);
+
+			try {
+				mailerService.sendWelcomeMail(user.getFirstName(), user.getEmail());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 			return "Login";
 		}
 	}
